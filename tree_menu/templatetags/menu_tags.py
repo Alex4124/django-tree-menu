@@ -29,15 +29,12 @@ def draw_menu(context, menu_slug):
     
     if active_item:
         
-        current = active_item
+        current = active_item.parent
         while current:
             items_to_expand.add(current.id)
             current = current.parent
-        
 
-        for item in menu_items:
-            if item.parent_id == active_item.id:
-                items_to_expand.add(item.id)
+        items_to_expand.add(active_item.id)
     
     root_items = [item for item in menu_items if item.parent_id is None]
     
